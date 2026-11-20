@@ -23,7 +23,6 @@
             width: 100vw;
             overflow: hidden;
             font-family: 'Quicksand', sans-serif;
-            /* Giữ nguyên background caro hồng của bạn, có màu nền dự phòng nếu chưa có file ảnh */
             background-color: #ffdce5;
             background-image: url('bg-pink.png');
             background-repeat: no-repeat;
@@ -399,145 +398,65 @@
             transform: scale(1);
         }
 
-        /* ==================== MÀN HÌNH NHẮC XOAY NGANG ĐIỆN THOẠI ==================== */
-        #rotate-lock-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: linear-gradient(155deg, #ffe6ee 0%, #ffd1e0 55%, #ffc2d6 100%);
-            backdrop-filter: blur(8px);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 28px 22px;
-            color: #7c2440;
-            touch-action: none;
-        }
-
-        /* Chỉ khóa khi ở màn hình dọc trên thiết bị cảm ứng / di động, và tự biến mất ngay khi xoay ngang */
-        @media (hover: none) and (pointer: coarse) and (orientation: portrait) {
-            #rotate-lock-overlay {
-                display: flex;
-            }
-        }
-
-        #rotate-lock-overlay.force-show {
-            display: flex;
-        }
-
-        .rotate-stage {
-            position: relative;
-            width: 112px;
-            height: 112px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-        }
-
-        .rotate-phone-icon {
-            animation: phoneTiltLandscape 2.2s ease-in-out infinite;
-        }
-
-        .rotate-arc-arrow {
-            position: absolute;
-            inset: 0;
-            animation: arrowPulseRotate 2.2s ease-in-out infinite;
-        }
-
-        @keyframes phoneTiltLandscape {
-            0%, 18% {
-                transform: rotate(0deg);
-            }
-            52%, 82% {
-                transform: rotate(-90deg);
-            }
-            100% {
-                transform: rotate(0deg);
-            }
-        }
-
-        @keyframes arrowPulseRotate {
-            0%, 100% {
-                opacity: 0.55;
-                transform: scale(0.96);
-            }
-            55% {
-                opacity: 1;
-                transform: scale(1.06);
-            }
-        }
-
-        /* Khi người dùng xoay ngang điện thoại: giữ bố cục ngang trái-phải và thu nhỏ gọn để không bị chật */
-        @media (hover: none) and (pointer: coarse) and (orientation: landscape) {
+        /* Giữ bố cục ngang gọn gàng trên màn hình nhỏ mà không khóa xoay ngang */
+        @media (max-width: 768px) {
             .screen {
-                padding: 10px 14px;
+                padding: 12px 14px;
+            }
+            .title-group {
+                margin-bottom: 12px;
+            }
+            .arch-text {
+                width: 260px;
+            }
+            .subtitle {
+                font-size: 36px;
+                margin-top: -24px;
             }
             .bouquet {
                 height: 36vh;
-                max-height: 175px;
-            }
-            .title-group {
-                margin-bottom: 6px;
-            }
-            .arch-text {
-                width: 240px;
-            }
-            .subtitle {
-                font-size: 32px;
-                margin-top: -22px;
+                max-height: 210px;
             }
             .hint {
-                margin-top: 8px;
-                padding: 4px 14px;
+                margin-top: 12px;
+                padding: 5px 14px;
                 font-size: 12px;
             }
             #screen-menu > div:first-child {
-                margin-bottom: 12px;
-                padding: 4px 14px;
+                margin-bottom: 14px;
+                padding: 5px 14px;
                 font-size: 13px;
             }
             #screen-menu > div:nth-child(2) {
                 flex-wrap: nowrap;
-                gap: 16px;
+                gap: 14px;
             }
             .gift-card {
-                width: 96px;
-                height: 96px;
+                width: 102px;
+                height: 102px;
                 border-width: 2.5px;
                 border-radius: 14px;
             }
             .gift-card svg {
-                width: 62px !important;
-                height: 62px !important;
+                width: 64px !important;
+                height: 64px !important;
             }
             .tap-label {
-                font-size: 18px;
+                font-size: 19px;
                 margin-top: 6px;
                 padding: 1px 12px;
             }
             .letter-box {
-                max-width: 640px;
+                max-width: 680px;
                 padding: 8px;
             }
             .letter-dashed {
-                padding: 12px 16px 10px;
+                padding: 14px 16px 12px;
             }
             .letter-dashed p {
-                font-size: 12.5px !important;
-                line-height: 1.38 !important;
+                font-size: 13px !important;
+                line-height: 1.42 !important;
             }
-            .letter-dashed .space-y-3\.5 > * + * {
-                margin-top: 6px !important;
-            }
-            .letter-dashed .my-5 {
-                margin-top: 8px !important;
-                margin-bottom: 8px !important;
-            }
-
-            /* Mục ảnh: bó hoa nhỏ bên trái, 2 cột 4 ảnh gọn bên phải */
             .photos-layout {
                 flex-direction: row !important;
                 gap: 12px !important;
@@ -546,11 +465,11 @@
             }
             .photos-bouquet-col {
                 display: flex !important;
-                width: 24% !important;
+                width: 26% !important;
             }
             .photos-bouquet-img {
-                width: 96px !important;
-                max-height: 135px;
+                width: 104px !important;
+                max-height: 150px;
                 object-fit: contain;
             }
             .photos-bouquet-badge {
@@ -560,12 +479,12 @@
             }
             .photos-grid-col {
                 flex-wrap: nowrap !important;
-                width: 76% !important;
+                width: 74% !important;
                 gap: 10px !important;
             }
             .photos-pair-col {
                 gap: 8px !important;
-                width: 98px !important;
+                width: 102px !important;
             }
             .photos-grid-col .polaroid {
                 padding: 5px 5px 16px 5px;
@@ -574,8 +493,6 @@
                 font-size: 12px;
                 margin-top: 3px;
             }
-
-            /* Mục video: đĩa than nhỏ bên trái, khung video gọn bên phải */
             .video-layout {
                 flex-direction: row !important;
                 gap: 14px !important;
@@ -583,26 +500,25 @@
                 max-width: 100% !important;
             }
             .video-vinyl-img {
-                width: 82px !important;
-                height: 82px !important;
+                width: 86px !important;
+                height: 86px !important;
             }
             .video-player-card {
-                max-width: 390px !important;
+                max-width: 420px !important;
                 padding: 8px !important;
             }
             .video-player-card .aspect-video {
-                max-height: 52vh;
+                max-height: 55vh;
             }
             .video-player-caption {
                 font-size: 12px !important;
                 margin-top: 6px !important;
             }
-
             .back-btn {
-                bottom: 10px;
-                right: 12px;
-                width: 40px;
-                height: 40px;
+                bottom: 12px;
+                right: 14px;
+                width: 42px;
+                height: 42px;
                 border-width: 2px;
             }
             .back-btn svg {
@@ -610,60 +526,9 @@
                 height: 18px !important;
             }
         }
-
-        /* Responsive cho màn hình nhỏ hơn */
-        @media (max-width: 768px) {
-            .gift-card {
-                width: 135px;
-                height: 135px;
-            }
-            .subtitle {
-                font-size: 44px;
-                margin-top: -30px;
-            }
-            .letter-dashed {
-                padding: 22px 18px 18px;
-            }
-            .back-btn {
-                bottom: 18px;
-                right: 18px;
-                width: 50px;
-                height: 50px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Lớp chắn yêu cầu xoay ngang điện thoại khi đang ở màn hình dọc -->
-    <div id="rotate-lock-overlay" role="dialog" aria-live="polite" aria-label="Vui lòng xoay ngang điện thoại">
-        <div class="bg-white/92 border-[3px] border-[#8a2c48] rounded-3xl px-7 py-8 max-w-sm w-full shadow-2xl flex flex-col items-center">
-            <div class="rotate-stage">
-                <!-- Mũi tên chỉ hướng xoay ngang -->
-                <svg class="rotate-arc-arrow w-full h-full text-[#e85d87]" viewBox="0 0 112 112" fill="none">
-                    <path d="M22 36 A40 40 0 0 1 86 30" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 6"/>
-                    <path d="M80 22 L88 31 L77 37" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M90 76 A40 40 0 0 1 26 82" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 6"/>
-                    <path d="M32 90 L24 81 L35 75" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-
-                <!-- Biểu tượng điện thoại xoay từ dọc sang ngang -->
-                <div class="rotate-phone-icon w-16 h-16 rounded-2xl bg-pink-100 border-2 border-[#d84b76] flex items-center justify-center shadow-md">
-                    <svg class="w-9 h-9 text-[#8a2c48]" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
-                        <rect x="7" y="3" width="10" height="18" rx="2.5" />
-                        <path stroke-linecap="round" d="M11 17.5h2" />
-                    </svg>
-                </div>
-            </div>
-
-            <p class="text-xl font-bold text-[#8a2c48] leading-snug mb-2">
-                Xoay ngang điện thoại giúp mình nhé! 🌸
-            </p>
-            <p class="text-sm font-semibold text-[#5e2236] leading-relaxed">
-                Góc nhìn nằm ngang mới mở trọn vẹn khung cảnh xinh xắn dành riêng cho Cô Giáo nè. 💕
-            </p>
-        </div>
-    </div>
-
     <!-- ========================================================= -->
     <!-- MÀN HÌNH 1: TRANG MỞ ĐẦU (HAPPY TEACHER'S DAY + BÓ HOA)   -->
     <!-- ========================================================= -->
@@ -1014,8 +879,8 @@
     <!-- MODAL 3: PHÓNG TO VIDEO KHI BẤM XEM LỚN                    -->
     <!-- ========================================================= -->
     <div id="video-modal" class="modal-overlay" onclick="closeLargeVideo()">
-        <div class="modal-card bg-white p-3 sm:p-4 rounded-2xl shadow-2xl max-w-4xl w-full text-center" onclick="event.stopPropagation()">
-            <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
+        <div id="video-modal-card" class="modal-card bg-white p-3 sm:p-4 rounded-2xl shadow-2xl max-w-4xl w-full text-center" onclick="event.stopPropagation()">
+            <div id="video-modal-stage" class="aspect-video w-full rounded-xl overflow-hidden bg-black">
                 <iframe id="modal-video-frame"
                         src=""
                         title="Phóng to video kỷ niệm 20/11"
@@ -1110,18 +975,36 @@
             document.getElementById('photo-modal').classList.remove('open');
         }
 
-        // Mở popup phóng to video
+        // Mở popup phóng to video và tự động kích hoạt chế độ toàn màn hình nếu hỗ trợ
         function openLargeVideo() {
             const modalFrame = document.getElementById('modal-video-frame');
+            const modalStage = document.getElementById('video-modal-stage');
+            const modalCard = document.getElementById('video-modal-card');
             if (modalFrame && ytVideoFrame) {
                 modalFrame.src = ytVideoFrame.src;
             }
             document.getElementById('video-modal').classList.add('open');
+
+            const fsTarget = modalCard || modalStage || modalFrame;
+            if (fsTarget) {
+                const reqFs = fsTarget.requestFullscreen
+                    || fsTarget.webkitRequestFullscreen
+                    || fsTarget.msRequestFullscreen;
+                if (typeof reqFs === 'function') {
+                    Promise.resolve(reqFs.call(fsTarget)).catch(() => {});
+                }
+            }
         }
 
         function closeLargeVideo() {
             const modal = document.getElementById('video-modal');
             const modalFrame = document.getElementById('modal-video-frame');
+            if (document.fullscreenElement || document.webkitFullscreenElement) {
+                const exitFs = document.exitFullscreen || document.webkitExitFullscreen;
+                if (typeof exitFs === 'function') {
+                    Promise.resolve(exitFs.call(document)).catch(() => {});
+                }
+            }
             if (modal) modal.classList.remove('open');
             if (modalFrame) modalFrame.src = '';
         }
@@ -1159,28 +1042,6 @@
                 closeLargeVideo();
             }
         });
-
-        // Kiểm tra hướng màn hình điện thoại để giữ khóa xoay ngang cho tới khi xoay ngang máy
-        const rotateOverlay = document.getElementById('rotate-lock-overlay');
-
-        function syncOrientationLock() {
-            if (!rotateOverlay) return;
-            const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-            const isPortraitByMatchMedia = window.matchMedia('(orientation: portrait)').matches;
-            const isPortraitByViewport = window.innerHeight > window.innerWidth;
-
-            if (isTouchDevice && (isPortraitByMatchMedia || isPortraitByViewport)) {
-                rotateOverlay.classList.add('force-show');
-            } else {
-                rotateOverlay.classList.remove('force-show');
-            }
-        }
-
-        window.addEventListener('resize', syncOrientationLock);
-        window.addEventListener('orientationchange', () => {
-            setTimeout(syncOrientationLock, 120);
-        });
-        syncOrientationLock();
     </script>
 </body>
 </html>
