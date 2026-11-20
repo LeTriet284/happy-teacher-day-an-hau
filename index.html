@@ -492,8 +492,8 @@
             }
             .video-player-card .aspect-video {
                 width: 100% !important;
-                aspect-ratio: 16 / 10;
-                max-height: 44vh;
+                aspect-ratio: 16 / 9;
+                min-height: 205px;
             }
             .video-player-caption {
                 flex-wrap: wrap !important;
@@ -795,14 +795,15 @@
                 </svg>
             </div>
 
-            <!-- Khung phát video bên phải -->
+            <!-- Khung phát video bên phải (dùng trình phát YouTube chuẩn để không bị thanh timeline Drive che trên iPhone) -->
             <div class="video-player-card w-full max-w-2xl bg-white/95 p-3 sm:p-4 rounded-2xl shadow-2xl border-2 border-pink-200">
                 <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
                     <iframe id="yt-video-frame"
-                            src="https://drive.google.com/file/d/1_zvJRWshrn_UzoTN2aRQ1NeZOS0z-Gd3/preview"
+                            src="https://www.youtube-nocookie.com/embed/hhV2Wpq7L6w?playsinline=1&rel=0&modestbranding=1"
                             title="Video kỷ niệm 20/11"
                             class="w-full h-full border-0"
-                            allow="autoplay; fullscreen"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                             allowfullscreen>
                     </iframe>
                 </div>
@@ -870,7 +871,8 @@
                         src=""
                         title="Phóng to video kỷ niệm 20/11"
                         class="w-full h-full border-0"
-                        allow="autoplay; fullscreen"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
                         allowfullscreen>
                 </iframe>
             </div>
