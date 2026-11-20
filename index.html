@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -1124,4 +1125,898 @@
     });
   </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Teacher's Day 20/11</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:wght@900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            /* Giữ nguyên background caro hồng của bạn, có màu nền dự phòng nếu chưa có file ảnh */
+            background-color: #ffdce5;
+            background-image: url('bg-pink.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            user-select: none;
+        }
+
+        /* Hệ thống chuyển màn hình mượt mà */
+        .screen {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.96);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            overflow-y: auto;
+        }
+
+        .screen.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+            z-index: 10;
+        }
+
+        /* ==================== MÀN HÌNH 1: TRANG CHỦ ==================== */
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 36px;
+        }
+
+        .arch-text {
+            width: 460px;
+            max-width: 90vw;
+            height: auto;
+            overflow: visible;
+        }
+
+        .arch-text text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 92px;
+            fill: #000;
+            letter-spacing: 6px;
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 58px;
+            color: #000;
+            margin-top: -42px;
+            line-height: 1;
+        }
+
+        .bouquet-wrap {
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+
+        .bouquet-wrap:hover {
+            transform: scale(1.06);
+        }
+
+        .bouquet {
+            height: 48vh;
+            max-height: 450px;
+            width: auto;
+            display: block;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.14));
+            animation: breathe 1.7s ease-in-out infinite;
+        }
+
+        .hint {
+            margin-top: 34px;
+            padding: 8px 22px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(4px);
+            font-size: 16px;
+            font-weight: 700;
+            color: #b83b5e;
+            letter-spacing: 0.4px;
+            box-shadow: 0 4px 12px rgba(184, 59, 94, 0.15);
+            animation: pulseText 1.7s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.78; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-3px); }
+        }
+
+        /* ==================== MÀN HÌNH 2: MENU 3 MÓN QUÀ ==================== */
+        .gift-card {
+            background: #fff9f2;
+            border: 3.5px solid #8a2c48;
+            border-radius: 18px;
+            width: 190px;
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 24px rgba(138, 44, 72, 0.14);
+            transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+            cursor: pointer;
+        }
+
+        .gift-item:hover .gift-card {
+            transform: translateY(-10px) scale(1.04);
+            box-shadow: 0 16px 32px rgba(184, 59, 94, 0.25);
+        }
+
+        .tap-label {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: #8a2c48;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2px 18px;
+            border-radius: 999px;
+            margin-top: 14px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .gift-item:hover .tap-label {
+            transform: scale(1.06);
+            background: #ffffff;
+        }
+
+        /* Hiệu ứng lá thư đóng / mở nhịp nhàng */
+        .letter-paper-anim {
+            transform-origin: 60px 72px;
+            animation: letterSlide 2.2s ease-in-out infinite;
+        }
+
+        .letter-flap-anim {
+            transform-box: fill-box;
+            transform-origin: top center;
+            animation: flapOpenClose 2.2s ease-in-out infinite;
+        }
+
+        @keyframes letterSlide {
+            0%, 100% { transform: translateY(4px); }
+            50% { transform: translateY(-7px); }
+        }
+
+        @keyframes flapOpenClose {
+            0%, 100% { transform: rotateX(0deg); }
+            50% { transform: rotateX(48deg); }
+        }
+
+        /* Hiệu ứng máy ảnh chụp & nháy flash tốc độ nhanh */
+        .camera-body-anim {
+            transform-origin: center;
+            animation: camShutterFast 1.35s ease-in-out infinite;
+        }
+
+        .camera-flash-anim {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: camFlashFast 1.35s ease-out infinite;
+        }
+
+        @keyframes camShutterFast {
+            0%, 65%, 100% { transform: scale(1); }
+            75% { transform: scale(0.93); }
+            85% { transform: scale(1.04); }
+        }
+
+        @keyframes camFlashFast {
+            0%, 68%, 100% { opacity: 0; transform: scale(0.4); }
+            76% { opacity: 1; transform: scale(1.35); }
+            88% { opacity: 0; transform: scale(1.6); }
+        }
+
+        /* Hiệu ứng đĩa than xoay tròn */
+        .vinyl-spin-anim {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: vinylSpin 3.4s linear infinite;
+        }
+
+        .vinyl-spin-anim.paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes vinylSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ==================== MÀN HÌNH 3A: LÁ THƯ ==================== */
+        .letter-box {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 12px;
+            box-shadow: 0 14px 36px rgba(138, 44, 72, 0.18);
+            max-width: 780px;
+            width: 92vw;
+            position: relative;
+        }
+
+        .letter-dashed {
+            border: 2.5px dashed #8a2c48;
+            border-radius: 14px;
+            padding: 32px 36px 24px;
+            background: #fffdfd;
+        }
+
+        .verse-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 11px;
+            margin: 0 2px;
+            border-radius: 999px;
+            background: #ffe8ef;
+            border: 1.5px dashed #d65a7e;
+            color: #9e2a4b;
+            font-size: 0.86em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            vertical-align: middle;
+        }
+
+        .verse-chip:hover {
+            background: #d65a7e;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(214, 90, 126, 0.3);
+        }
+
+        /* ==================== MÀN HÌNH 3B: ALBUM POLAROID ==================== */
+        .polaroid {
+            background: #ffffff;
+            padding: 10px 10px 30px 10px;
+            border-radius: 4px;
+            box-shadow: 0 10px 24px rgba(90, 30, 50, 0.22);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, z-index 0s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.1) !important;
+            z-index: 30;
+            box-shadow: 0 18px 36px rgba(90, 30, 50, 0.32);
+        }
+
+        .polaroid img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            border-radius: 2px;
+            background: #fce4ec;
+        }
+
+        .polaroid-caption {
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+            color: #7a3047;
+            text-align: center;
+            margin-top: 6px;
+            line-height: 1;
+        }
+
+        /* Nút đổi ảnh hiện nhẹ khi di chuột vào khung Polaroid */
+        .change-photo-btn {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 255, 255, 0.92);
+            color: #8a2c48;
+            border: 1.5px solid #f48fb1;
+            border-radius: 999px;
+            padding: 3px 9px;
+            font-size: 11px;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        .polaroid:hover .change-photo-btn {
+            opacity: 1;
+        }
+
+        .change-photo-btn:hover {
+            background: #d84b76;
+            color: #ffffff;
+            border-color: #d84b76;
+            transform: scale(1.06);
+        }
+
+        /* ==================== NÚT QUAY LẠI (BACK BUTTON) ==================== */
+        .back-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 34px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #f48fb1, #d84b76);
+            border: 3px solid #ffffff;
+            box-shadow: 0 6px 18px rgba(184, 59, 94, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            z-index: 40;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 22px rgba(184, 59, 94, 0.45);
+        }
+
+        .back-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Modal Popup (Câu gốc Kinh Thánh & Phóng to ảnh) */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(65, 20, 35, 0.55);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            transform: scale(0.9);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.open .modal-card {
+            transform: scale(1);
+        }
+
+        /* Responsive cho màn hình nhỏ hơn */
+        @media (max-width: 768px) {
+            .gift-card {
+                width: 135px;
+                height: 135px;
+            }
+            .subtitle {
+                font-size: 44px;
+                margin-top: -30px;
+            }
+            .letter-dashed {
+                padding: 22px 18px 18px;
+            }
+            .back-btn {
+                bottom: 18px;
+                right: 18px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================================= -->
+    <!-- MÀN HÌNH 1: TRANG MỞ ĐẦU (HAPPY TEACHER'S DAY + BÓ HOA)   -->
+    <!-- ========================================================= -->
+    <section id="screen-home" class="screen active">
+        <div class="title-group">
+            <svg viewBox="0 0 500 140" class="arch-text">
+                <path id="curve" d="M 35,130 Q 250,30 465,130" fill="transparent" />
+                <text>
+                    <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                        HAPPY
+                    </textPath>
+                </text>
+            </svg>
+            <h2 class="subtitle">Teacher's Day</h2>
+        </div>
+
+        <div class="bouquet-wrap" onclick="goToScreen('screen-menu')" title="Nhấn vào bó hoa nhé!">
+            <img src="bouquet.png"
+                 alt="Bouquet"
+                 class="bouquet"
+                 onerror="this.src='https://placehold.co/360x420/fce4ec/b83b5e?text=bouquet.png'">
+        </div>
+
+        <p class="hint" onclick="goToScreen('screen-menu')">Tap the bouquet for a little surprise ✨</p>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- MÀN HÌNH 2: MENU CHỌN 3 MÓN QUÀ                           -->
+    <!-- ========================================================= -->
+    <section id="screen-menu" class="screen">
+        <!-- Thanh tiêu đề nhỏ phía trên -->
+        <div class="mb-10 px-6 py-2.5 rounded-full bg-white/90 border-2 border-[#8a2c48] shadow-md text-[#8a2c48] font-bold text-base sm:text-lg text-center">
+            💌 Chọn từng món quà nhỏ dành cho "Cô Giáo" nhé!
+        </div>
+
+        <!-- 3 Ô chọn quà -->
+        <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 max-w-4xl">
+            <!-- Ô 1: Lá thư -->
+            <div class="gift-item flex flex-col items-center" onclick="goToScreen('screen-letter')">
+                <div class="gift-card">
+                    <svg class="w-28 h-28 drop-shadow-sm overflow-visible" viewBox="0 0 120 120" fill="none">
+                        <g transform="rotate(-10 60 60)">
+                            <!-- Thân phong bì -->
+                            <rect x="14" y="34" width="92" height="62" rx="8" fill="#f8bbd0" stroke="#8a2c48" stroke-width="3"/>
+                            <!-- Tờ giấy đóng/mở bên trong -->
+                            <g class="letter-paper-anim">
+                                <rect x="24" y="22" width="72" height="54" rx="4" fill="#ffffff" stroke="#e5a3b8" stroke-width="2"/>
+                                <line x1="36" y1="36" x2="84" y2="36" stroke="#f0b6c8" stroke-width="3" stroke-linecap="round"/>
+                                <line x1="36" y1="47" x2="74" y2="47" stroke="#f0b6c8" stroke-width="3" stroke-linecap="round"/>
+                            </g>
+                            <!-- Nắp dưới -->
+                            <path d="M16 94 L60 58 L104 94" fill="#fce4ec" stroke="#8a2c48" stroke-width="3" stroke-linejoin="round"/>
+                            <!-- Nắp trên đóng/mở -->
+                            <g class="letter-flap-anim">
+                                <path d="M15 36 L60 68 L105 36" fill="#f8bbd0" fill-opacity="0.75" stroke="#8a2c48" stroke-width="3" stroke-linejoin="round"/>
+                            </g>
+                            <!-- Trái tim niêm phong -->
+                            <path d="M60 76 C60 76 50 69 50 63 C50 59.5 53 57 56 57 C58 57 59.5 58.5 60 60 C60.5 58.5 62 57 64 57 C67 57 70 59.5 70 63 C70 69 60 76 60 76Z" fill="#e91e63"/>
+                        </g>
+                    </svg>
+                </div>
+                <span class="tap-label">Tap to it</span>
+            </div>
+
+            <!-- Ô 2: Máy ảnh (Album kỷ niệm) -->
+            <div class="gift-item flex flex-col items-center" onclick="goToScreen('screen-photos')">
+                <div class="gift-card">
+                    <svg class="w-28 h-28 overflow-visible" viewBox="0 0 120 120" fill="none">
+                        <g class="camera-body-anim">
+                            <!-- Nút chụp & cục trên -->
+                            <rect x="28" y="31" width="12" height="6" rx="2" fill="#8a2c48"/>
+                            <path d="M44 37 L50 26 H70 L76 37 Z" fill="#fff9f2" stroke="#8a2c48" stroke-width="3.5" stroke-linejoin="round"/>
+                            <!-- Thân máy ảnh -->
+                            <rect x="16" y="37" width="88" height="58" rx="10" fill="#fff9f2" stroke="#8a2c48" stroke-width="3.5"/>
+                            <!-- Tay cầm bên trái -->
+                            <rect x="20" y="49" width="16" height="36" rx="4" fill="#b83b5e"/>
+                            <!-- Ống kính -->
+                            <circle cx="64" cy="66" r="21" fill="#fce4ec" stroke="#8a2c48" stroke-width="3.5"/>
+                            <circle cx="64" cy="66" r="13" fill="#8a2c48"/>
+                            <circle cx="69" cy="61" r="4" fill="#ffffff"/>
+                            <!-- Đèn flash -->
+                            <circle cx="91" cy="48" r="4" fill="#f06292"/>
+                            <circle cx="60" cy="32" r="2.5" fill="#8a2c48"/>
+                        </g>
+                        <!-- Tia sáng flash lóe nhanh khi chụp -->
+                        <g class="camera-flash-anim">
+                            <circle cx="91" cy="48" r="16" fill="#fff59d" opacity="0.75"/>
+                            <path d="M91 22 L94 42 L114 48 L94 54 L91 74 L88 54 L68 48 L88 42 Z" fill="#ffe082"/>
+                        </g>
+                    </svg>
+                </div>
+                <span class="tap-label">Tap to it</span>
+            </div>
+
+            <!-- Ô 3: Đĩa nhạc (Video/Nhạc) -->
+            <div class="gift-item flex flex-col items-center" onclick="goToScreen('screen-music')">
+                <div class="gift-card">
+                    <svg class="w-32 h-32 drop-shadow-md vinyl-spin-anim" viewBox="0 0 120 120" fill="none">
+                        <circle cx="60" cy="60" r="52" fill="#1e1b1e"/>
+                        <circle cx="60" cy="60" r="44" stroke="#332d33" stroke-width="1.5"/>
+                        <circle cx="60" cy="60" r="36" stroke="#332d33" stroke-width="1.5"/>
+                        <circle cx="60" cy="60" r="28" stroke="#332d33" stroke-width="1.5"/>
+                        <!-- Ánh phản chiếu đĩa than -->
+                        <path d="M26 36 A44 44 0 0 1 56 17" stroke="rgba(255,255,255,0.16)" stroke-width="6" stroke-linecap="round"/>
+                        <path d="M94 84 A44 44 0 0 1 64 103" stroke="rgba(255,255,255,0.12)" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Nhãn giữa màu hồng -->
+                        <circle cx="60" cy="60" r="20" fill="#ffffff"/>
+                        <circle cx="60" cy="60" r="15" fill="#e85d87"/>
+                        <!-- Nút Play -->
+                        <polygon points="56,52 69,60 56,68" fill="#ffffff"/>
+                    </svg>
+                </div>
+                <span class="tap-label">Tap to it</span>
+            </div>
+        </div>
+
+        <!-- Nút quay lại Màn hình 1 -->
+        <button class="back-btn" onclick="goToScreen('screen-home')" aria-label="Quay lại trang chủ" title="Quay lại">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+        </button>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- MÀN HÌNH 3A: LÁ THƯ LỜI CHÚC 20/11                        -->
+    <!-- ========================================================= -->
+    <section id="screen-letter" class="screen">
+        <div class="relative flex items-center justify-center">
+            <!-- Sticker trang trí phong bì góc trên trái -->
+            <svg class="hidden sm:block w-28 h-28 absolute -top-10 -left-12 -rotate-12 pointer-events-none drop-shadow-md z-0" viewBox="0 0 120 120" fill="none">
+                <rect x="14" y="34" width="92" height="62" rx="8" fill="#f8bbd0" stroke="#fff" stroke-width="4"/>
+                <path d="M16 36 L60 68 L104 36" fill="#fce4ec" stroke="#fff" stroke-width="3"/>
+                <path d="M60 72 C60 72 52 66 52 61 C52 58 54.5 56 57 56 C58.5 56 59.5 57 60 58.5 C60.5 57 61.5 56 63 56 C65.5 56 68 58 68 61 C68 66 60 72 60 72Z" fill="#d84b76"/>
+            </svg>
+
+            <!-- Sticker bông hoa nhỏ góc dưới trái -->
+            <svg class="w-20 h-20 absolute -bottom-8 -left-6 pointer-events-none drop-shadow-md z-20" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="26" r="16" fill="#ff8fb1"/>
+                <circle cx="72" cy="42" r="16" fill="#ff8fb1"/>
+                <circle cx="64" cy="68" r="16" fill="#ff8fb1"/>
+                <circle cx="36" cy="68" r="16" fill="#ff8fb1"/>
+                <circle cx="28" cy="42" r="16" fill="#ff8fb1"/>
+                <circle cx="50" cy="50" r="12" fill="#ffe082"/>
+            </svg>
+
+            <!-- Sticker ngôi sao lấp lánh góc trên phải -->
+            <svg class="w-16 h-16 absolute -top-7 -right-6 pointer-events-none drop-shadow-sm z-20" viewBox="0 0 100 100" fill="none">
+                <path d="M50 8 L58 38 L88 46 L58 54 L50 84 L42 54 L12 46 L42 38 Z" fill="#ffd54f" stroke="#fff" stroke-width="3"/>
+            </svg>
+
+            <!-- Khung lá thư chính -->
+            <div class="letter-box z-10">
+                <div class="letter-dashed text-center">
+                    <div class="space-y-3.5 text-[#3b1c26] text-base sm:text-[19px] leading-relaxed sm:leading-[1.8] font-semibold">
+                        <p class="text-lg sm:text-[22px] font-bold text-[#8a2c48]">
+                            Chúc mừng ngày 20/11 'cô giáo' đặc biệt của Anh!
+                        </p>
+                        <p>
+                            Thay lời các bé thiếu ấu nhi, cảm ơn cô Ân Hậu vì luôn kiên nhẫn gieo những hạt giống yêu thương
+                            (<button class="verse-chip" onclick="openVerse('chamngon')">📖 Châm Ngôn 22:6</button>).
+                        </p>
+                        <p>
+                            Thay mặt nhóm 9, cảm ơn Em đã tận tâm chia sẻ Lời Chúa trong các buổi nhóm nhỏ và hết mình dùng tài năng hướng dẫn cả nhà tập múa cho ngày hội thao
+                            (<button class="verse-chip" onclick="openVerse('roma')">📖 Rô-ma 12:7</button>).
+                        </p>
+                        <p>
+                            Còn riêng với Anh, Em chính là người đã dạy Anh biết cách yêu, thương và chăm sóc một người là như thế nào. Nguyện Chúa luôn ban thêm sức mới và niềm vui trọn vẹn cho Em nhé! ❤️
+                        </p>
+                    </div>
+
+                    <!-- Đường kẻ phân cách -->
+                    <div class="my-5 border-t border-dashed border-pink-300"></div>
+
+                    <!-- Hàng gợi ý bấm đọc câu gốc -->
+                    <div class="flex flex-wrap items-center justify-center gap-2.5 text-sm sm:text-base text-[#8a2c48] font-bold">
+                        <span>👆 Chạm đọc câu gốc:</span>
+                        <button class="verse-chip" onclick="openVerse('chamngon')">📖 Châm Ngôn 22:6</button>
+                        <button class="verse-chip" onclick="openVerse('roma')">📖 Rô-ma 12:7</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nút quay lại Màn hình 2 -->
+        <button class="back-btn" onclick="goToScreen('screen-menu')" aria-label="Quay lại menu" title="Quay lại">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+        </button>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- MÀN HÌNH 3B: ALBUM ẢNH KỶ NIỆM (POLAROID SCRAPBOOK)       -->
+    <!-- ========================================================= -->
+    <section id="screen-photos" class="screen">
+        <div class="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10 px-4 py-6">
+            <!-- Bó hoa trang trí bên trái -->
+            <div class="hidden lg:flex flex-col items-center justify-center w-1/3">
+                <img src="bouquet.png"
+                     alt="Bouquet"
+                     class="w-72 h-auto drop-shadow-xl hover:scale-105 transition-transform duration-300"
+                     onerror="this.src='https://placehold.co/280x320/fce4ec/b83b5e?text=bouquet.png'">
+                <span class="mt-3 px-4 py-1 rounded-full bg-white/80 text-[#9e2a4b] font-bold text-sm shadow-sm">
+                    ✨ Những khoảnh khắc đáng nhớ ✨
+                </span>
+            </div>
+
+            <!-- Lưới 6 ảnh Polaroid xếp theo từng cột dọc (1-2 | 3-4 | 5-6) -->
+            <div class="flex flex-wrap sm:flex-nowrap items-center justify-center gap-5 sm:gap-7 w-full lg:w-2/3 max-w-2xl">
+                <!-- Input ẩn dùng để chọn ảnh thay thế trực tiếp từ máy tính -->
+                <input type="file" id="photo-uploader" accept="image/*" class="hidden">
+
+                <!-- CỘT 1: Memory 01 (trên) & Memory 02 (dưới) -->
+                <div class="flex flex-col gap-5 sm:gap-7 w-40 sm:w-52">
+                    <div class="polaroid" style="transform: rotate(-5deg);" onclick="openPhoto(this)">
+                        <button class="change-photo-btn" onclick="triggerPhotoUpload(event, 'mem-img-1')" title="Chọn ảnh khác thay thế">📷 Đổi ảnh</button>
+                        <img id="mem-img-1" src="Memory 01.jpg" alt="Kỷ niệm 1" onerror="this.src='https://placehold.co/400x400/ffd6e0/8a2c48?text=Memory+01.jpg'">
+                        <p class="polaroid-caption">Memory 01 ✨</p>
+                    </div>
+
+                    <div class="polaroid" style="transform: rotate(3deg);" onclick="openPhoto(this)">
+                        <button class="change-photo-btn" onclick="triggerPhotoUpload(event, 'mem-img-2')" title="Chọn ảnh khác thay thế">📷 Đổi ảnh</button>
+                        <img id="mem-img-2" src="Memory 02.jpg" alt="Kỷ niệm 2" onerror="this.src='https://placehold.co/400x400/ffe0eb/8a2c48?text=Memory+02.jpg'">
+                        <p class="polaroid-caption">Memory 02 🌸</p>
+                    </div>
+                </div>
+
+                <!-- CỘT 2: Memory 03 (trên) & Memory 04 (dưới) -->
+                <div class="flex flex-col gap-5 sm:gap-7 w-40 sm:w-52">
+                    <div class="polaroid" style="transform: rotate(4deg) translateY(-6px);" onclick="openPhoto(this)">
+                        <button class="change-photo-btn" onclick="triggerPhotoUpload(event, 'mem-img-3')" title="Chọn ảnh khác thay thế">📷 Đổi ảnh</button>
+                        <img id="mem-img-3" src="Memory 03.jpg" alt="Kỷ niệm 3" onerror="this.src='https://placehold.co/400x400/ffc8d6/8a2c48?text=Memory+03.jpg'">
+                        <p class="polaroid-caption">Memory 03 💕</p>
+                    </div>
+
+                    <div class="polaroid" style="transform: rotate(-4deg) translateY(4px);" onclick="openPhoto(this)">
+                        <button class="change-photo-btn" onclick="triggerPhotoUpload(event, 'mem-img-4')" title="Chọn ảnh khác thay thế">📷 Đổi ảnh</button>
+                        <img id="mem-img-4" src="Memory 04.jpg" alt="Kỷ niệm 4" onerror="this.src='https://placehold.co/400x400/ffdce5/8a2c48?text=Memory+04.jpg'">
+                        <p class="polaroid-caption">Memory 04 🌷</p>
+                    </div>
+                </div>
+
+                <!-- CỘT 3: Memory 05 (trên) & Memory 06 (dưới) — Nếu chưa có ảnh, bạn có thể xóa nguyên khối div này -->
+                <div class="flex flex-col gap-5 sm:gap-7 w-40 sm:w-52">
+                    <div class="polaroid" style="transform: rotate(-3deg);" onclick="openPhoto(this)">
+                        <button class="change-photo-btn" onclick="triggerPhotoUpload(event, 'mem-img-5')" title="Chọn ảnh khác thay thế">📷 Đổi ảnh</button>
+                        <img id="mem-img-5" src="Memory 05.jpg" alt="Kỷ niệm 5" onerror="this.src='https://placehold.co/400x400/ffcad4/8a2c48?text=Memory+05.jpg'">
+                        <p class="polaroid-caption">Memory 05 🎀</p>
+                    </div>
+
+                    <div class="polaroid" style="transform: rotate(4deg) translateY(6px);" onclick="openPhoto(this)">
+                        <button class="change-photo-btn" onclick="triggerPhotoUpload(event, 'mem-img-6')" title="Chọn ảnh khác thay thế">📷 Đổi ảnh</button>
+                        <img id="mem-img-6" src="Memory 06.jpg" alt="Kỷ niệm 6" onerror="this.src='https://placehold.co/400x400/ffe5ec/8a2c48?text=Memory+06.jpg'">
+                        <p class="polaroid-caption">Memory 06 💖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nút quay lại Màn hình 2 -->
+        <button class="back-btn" onclick="goToScreen('screen-menu')" aria-label="Quay lại menu" title="Quay lại">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+        </button>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- MÀN HÌNH 3C: XEM VIDEO KỶ NIỆM (FILE MP4 TRONG MÁY)       -->
+    <!-- ========================================================= -->
+    <section id="screen-music" class="screen">
+        <div class="w-full max-w-5xl flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 px-4">
+            <!-- Đĩa than xoay xoay bên cạnh màn hình video -->
+            <div class="flex flex-col items-center justify-center shrink-0">
+                <svg id="video-page-vinyl"
+                     onclick="toggleVideoPlayback()"
+                     title="Bấm vào đĩa than để phát / tạm dừng video"
+                     class="w-36 h-36 sm:w-44 sm:h-44 drop-shadow-xl vinyl-spin-anim cursor-pointer hover:scale-105 transition-transform"
+                     viewBox="0 0 120 120" fill="none">
+                    <circle cx="60" cy="60" r="54" fill="#1e1b1e" stroke="#ffffff" stroke-width="3"/>
+                    <circle cx="60" cy="60" r="44" stroke="#3a333a" stroke-width="1.5"/>
+                    <circle cx="60" cy="60" r="36" stroke="#3a333a" stroke-width="1.5"/>
+                    <circle cx="60" cy="60" r="28" stroke="#3a333a" stroke-width="1.5"/>
+                    <path d="M26 36 A44 44 0 0 1 56 17" stroke="rgba(255,255,255,0.22)" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M94 84 A44 44 0 0 1 64 103" stroke="rgba(255,255,255,0.14)" stroke-width="6" stroke-linecap="round"/>
+                    <circle cx="60" cy="60" r="21" fill="#ffffff"/>
+                    <circle cx="60" cy="60" r="16" fill="#e85d87"/>
+                    <circle cx="60" cy="60" r="4" fill="#ffffff"/>
+            </div>
+
+            <!-- Khung phát video -->
+            <div class="w-full max-w-2xl bg-white/95 p-3 sm:p-4 rounded-2xl shadow-2xl border-2 border-pink-200">
+                <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
+                    <video id="local-video"
+                           class="w-full h-full object-contain bg-black"
+                           controls
+                           playsinline
+                           preload="metadata">
+                        <!-- Đổi tên thành Nhay_co_dong_2026.mp4 nếu bạn dùng lại file gốc chưa nén -->
+                        <source src="Nhay_co_dong_2026_original.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ phát video.
+                    </video>
+                </div>
+                <p class="text-center text-sm sm:text-base font-bold text-[#8a2c48] mt-3">
+                    🎵 Một món quà đặc biệt dành tặng cô giáo ngày 20/11 🎵
+                </p>
+            </div>
+        </div>
+
+        <!-- Nút quay lại Màn hình 2 -->
+        <button class="back-btn" onclick="goToScreen('screen-menu')" aria-label="Quay lại menu" title="Quay lại">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+        </button>
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- MODAL 1: HIỂN THỊ CÂU GỐC KINH THÁNH                      -->
+    <!-- ========================================================= -->
+    <div id="verse-modal" class="modal-overlay" onclick="closeVerse(event)">
+        <div class="modal-card bg-white rounded-3xl p-7 max-w-md w-full shadow-2xl border-2 border-pink-200 text-center relative" onclick="event.stopPropagation()">
+            <div class="inline-block px-4 py-1 rounded-full bg-pink-100 text-[#9e2a4b] font-bold text-sm mb-3" id="verse-title">
+                📖 Châm Ngôn 22:6
+            </div>
+            <p class="text-[#3b1c26] text-lg leading-relaxed font-semibold italic mb-6" id="verse-text">
+                "..."
+            </p>
+            <button onclick="closeVerse()" class="px-6 py-2 rounded-full bg-[#d84b76] hover:bg-[#b83b5e] text-white font-bold text-sm transition cursor-pointer shadow-md">
+                Đóng lại ✨
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- MODAL 2: PHÓNG TO ẢNH POLAROID KHI BẤM VÀO                -->
+    <!-- ========================================================= -->
+    <div id="photo-modal" class="modal-overlay" onclick="closePhoto()">
+        <div class="modal-card bg-white p-4 pb-8 rounded-xl shadow-2xl max-w-md w-full text-center" onclick="event.stopPropagation()">
+            <img id="modal-photo-img" src="" alt="Phóng to ảnh" class="w-full max-h-[65vh] object-contain rounded-md bg-pink-50">
+            <p id="modal-photo-caption" class="font-['Dancing_Script'] text-3xl text-[#8a2c48] mt-3"></p>
+            <button onclick="closePhoto()" class="mt-4 px-5 py-1.5 rounded-full bg-pink-100 hover:bg-pink-200 text-[#8a2c48] font-bold text-sm cursor-pointer">
+                Đóng
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT ĐIỀU KHIỂN FLOW & TƯƠNG TÁC                    -->
+    <!-- ========================================================= -->
+    <script>
+        // Tham chiếu tới trình phát video nội bộ và đĩa than trên trang video
+        const localVideo = document.getElementById('local-video');
+        const videoPageVinyl = document.getElementById('video-page-vinyl');
+
+        // Bấm vào đĩa than để phát hoặc tạm dừng video nhanh
+        function toggleVideoPlayback() {
+            if (!localVideo) return;
+            if (localVideo.paused) {
+                localVideo.play().catch(() => {});
+            } else {
+                localVideo.pause();
+            }
+        }
+
+        // Hàm chuyển màn hình
+        function goToScreen(targetId) {
+            const currentActive = document.querySelector('.screen.active');
+
+            // Nếu đang rời khỏi màn hình video thì tự động tạm dừng video để không bị phát chồng tiếng
+            if (currentActive && currentActive.id === 'screen-music' && targetId !== 'screen-music') {
+                if (localVideo) {
+                    localVideo.pause();
+                }
+            }
+
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+
+            const targetScreen = document.getElementById(targetId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+                targetScreen.scrollTop = 0;
+            }
+        }
+
+        // Dữ liệu 2 câu gốc Kinh Thánh
+        const verses = {
+            chamngon: {
+                title: '📖 Châm Ngôn 22:6',
+                text: '“Hãy dạy cho trẻ thơ con đường nó phải theo; Dầu khi nó trở về già, cũng không hề lìa khỏi đó.”'
+            },
+            roma: {
+                title: '📖 Rô-ma 12:7',
+                text: '“Ai được ơn phục vụ, hãy chuyên tâm phục vụ; ai được ơn dạy dỗ, hãy chuyên tâm dạy dỗ.”'
+            }
+        };
+
+        // Mở popup câu gốc Kinh Thánh
+        function openVerse(key) {
+            const data = verses[key];
+            if (!data) return;
+            document.getElementById('verse-title').textContent = data.title;
+            document.getElementById('verse-text').textContent = data.text;
+            document.getElementById('verse-modal').classList.add('open');
+        }
+
+        function closeVerse() {
+            document.getElementById('verse-modal').classList.remove('open');
+        }
+
+        // Mở popup phóng to ảnh Polaroid
+        function openPhoto(cardElement) {
+            const img = cardElement.querySelector('img');
+            const caption = cardElement.querySelector('.polaroid-caption');
+            document.getElementById('modal-photo-img').src = img.src;
+            document.getElementById('modal-photo-caption').textContent = caption ? caption.textContent : '';
+            document.getElementById('photo-modal').classList.add('open');
+        }
+
+        function closePhoto() {
+            document.getElementById('photo-modal').classList.remove('open');
+        }
+
+        // Tính năng chọn ảnh từ máy tính để thay thế trực tiếp từng khung Polaroid
+        let currentUploadTargetId = null;
+        const photoUploader = document.getElementById('photo-uploader');
+
+        function triggerPhotoUpload(event, imgId) {
+            event.stopPropagation(); // Ngăn không cho mở popup phóng to ảnh
+            currentUploadTargetId = imgId;
+            if (photoUploader) {
+                photoUploader.value = '';
+                photoUploader.click();
+            }
+        }
+
+        if (photoUploader) {
+            photoUploader.addEventListener('change', (e) => {
+                const file = e.target.files && e.target.files[0];
+                if (file && currentUploadTargetId) {
+                    const targetImg = document.getElementById(currentUploadTargetId);
+                    if (targetImg) {
+                        targetImg.src = URL.createObjectURL(file);
+                    }
+                }
+            });
+        }
+
+        // Cho phép bấm phím ESC để đóng popup
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeVerse();
+                closePhoto();
+            }
+        });
+    </script>
+</body>
+>>>>>>> 89f5f92 (Add website with video)
 </html>
