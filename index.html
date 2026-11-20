@@ -369,11 +369,11 @@
             transform: scale(0.95);
         }
 
-        /* Modal Popup (Câu gốc Kinh Thánh & Phóng to ảnh) */
+        /* Modal Popup (Câu gốc Kinh Thánh, Phóng to ảnh & Phóng to video) */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(65, 20, 35, 0.55);
+            background: rgba(65, 20, 35, 0.62);
             backdrop-filter: blur(4px);
             display: flex;
             align-items: center;
@@ -382,7 +382,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.25s ease;
-            padding: 20px;
+            padding: 16px;
         }
 
         .modal-overlay.open {
@@ -470,44 +470,144 @@
             }
         }
 
-        /* Khi người dùng xoay ngang điện thoại, giữ bố cục ngang gọn gàng tương tự PC */
+        /* Khi người dùng xoay ngang điện thoại: giữ bố cục ngang trái-phải và thu nhỏ gọn để không bị chật */
         @media (hover: none) and (pointer: coarse) and (orientation: landscape) {
+            .screen {
+                padding: 10px 14px;
+            }
             .bouquet {
-                height: 44vh;
-                max-height: 250px;
+                height: 36vh;
+                max-height: 175px;
             }
             .title-group {
-                margin-bottom: 10px;
+                margin-bottom: 6px;
             }
             .arch-text {
-                width: 300px;
+                width: 240px;
             }
             .subtitle {
-                font-size: 38px;
-                margin-top: -26px;
+                font-size: 32px;
+                margin-top: -22px;
             }
             .hint {
-                margin-top: 12px;
-                padding: 5px 16px;
+                margin-top: 8px;
+                padding: 4px 14px;
+                font-size: 12px;
+            }
+            #screen-menu > div:first-child {
+                margin-bottom: 12px;
+                padding: 4px 14px;
                 font-size: 13px;
             }
+            #screen-menu > div:nth-child(2) {
+                flex-wrap: nowrap;
+                gap: 16px;
+            }
             .gift-card {
-                width: 125px;
-                height: 125px;
+                width: 96px;
+                height: 96px;
+                border-width: 2.5px;
+                border-radius: 14px;
+            }
+            .gift-card svg {
+                width: 62px !important;
+                height: 62px !important;
             }
             .tap-label {
-                font-size: 22px;
-                margin-top: 8px;
+                font-size: 18px;
+                margin-top: 6px;
+                padding: 1px 12px;
             }
             .letter-box {
-                max-width: 680px;
+                max-width: 640px;
+                padding: 8px;
             }
             .letter-dashed {
-                padding: 16px 22px 14px;
+                padding: 12px 16px 10px;
             }
             .letter-dashed p {
-                font-size: 14px !important;
-                line-height: 1.45 !important;
+                font-size: 12.5px !important;
+                line-height: 1.38 !important;
+            }
+            .letter-dashed .space-y-3\.5 > * + * {
+                margin-top: 6px !important;
+            }
+            .letter-dashed .my-5 {
+                margin-top: 8px !important;
+                margin-bottom: 8px !important;
+            }
+
+            /* Mục ảnh: bó hoa nhỏ bên trái, 2 cột 4 ảnh gọn bên phải */
+            .photos-layout {
+                flex-direction: row !important;
+                gap: 12px !important;
+                padding: 4px 8px !important;
+                max-width: 100% !important;
+            }
+            .photos-bouquet-col {
+                display: flex !important;
+                width: 24% !important;
+            }
+            .photos-bouquet-img {
+                width: 96px !important;
+                max-height: 135px;
+                object-fit: contain;
+            }
+            .photos-bouquet-badge {
+                margin-top: 4px !important;
+                padding: 2px 8px !important;
+                font-size: 10px !important;
+            }
+            .photos-grid-col {
+                flex-wrap: nowrap !important;
+                width: 76% !important;
+                gap: 10px !important;
+            }
+            .photos-pair-col {
+                gap: 8px !important;
+                width: 98px !important;
+            }
+            .photos-grid-col .polaroid {
+                padding: 5px 5px 16px 5px;
+            }
+            .photos-grid-col .polaroid-caption {
+                font-size: 12px;
+                margin-top: 3px;
+            }
+
+            /* Mục video: đĩa than nhỏ bên trái, khung video gọn bên phải */
+            .video-layout {
+                flex-direction: row !important;
+                gap: 14px !important;
+                padding: 4px 8px !important;
+                max-width: 100% !important;
+            }
+            .video-vinyl-img {
+                width: 82px !important;
+                height: 82px !important;
+            }
+            .video-player-card {
+                max-width: 390px !important;
+                padding: 8px !important;
+            }
+            .video-player-card .aspect-video {
+                max-height: 52vh;
+            }
+            .video-player-caption {
+                font-size: 12px !important;
+                margin-top: 6px !important;
+            }
+
+            .back-btn {
+                bottom: 10px;
+                right: 12px;
+                width: 40px;
+                height: 40px;
+                border-width: 2px;
+            }
+            .back-btn svg {
+                width: 18px !important;
+                height: 18px !important;
             }
         }
 
@@ -559,7 +659,7 @@
                 Xoay ngang điện thoại giúp mình nhé! 🌸
             </p>
             <p class="text-sm font-semibold text-[#5e2236] leading-relaxed">
-                Góc nhìn nằm ngang mới mở trọn vẹn khung cảnh xinh xắn dành riêng cho Cô Giáo nè. Xoay ngang máy là thấy ngay như trên PC liền! 💕
+                Góc nhìn nằm ngang mới mở trọn vẹn khung cảnh xinh xắn dành riêng cho Cô Giáo nè. 💕
             </p>
         </div>
     </div>
@@ -763,25 +863,25 @@
     <!-- MÀN HÌNH 3B: ALBUM ẢNH KỶ NIỆM (POLAROID SCRAPBOOK)       -->
     <!-- ========================================================= -->
     <section id="screen-photos" class="screen">
-        <div class="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10 px-4 py-6">
+        <div class="photos-layout w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-10 px-4 py-6">
             <!-- Bó hoa trang trí bên trái -->
-            <div class="hidden lg:flex flex-col items-center justify-center w-1/3">
+            <div class="photos-bouquet-col hidden lg:flex flex-col items-center justify-center w-1/3">
                 <img src="bouquet.png"
                      alt="Bouquet"
-                     class="w-72 h-auto drop-shadow-xl hover:scale-105 transition-transform duration-300"
+                     class="photos-bouquet-img w-72 h-auto drop-shadow-xl hover:scale-105 transition-transform duration-300"
                      onerror="this.src='https://placehold.co/280x320/fce4ec/b83b5e?text=bouquet.png'">
-                <span class="mt-3 px-4 py-1 rounded-full bg-white/80 text-[#9e2a4b] font-bold text-sm shadow-sm">
+                <span class="photos-bouquet-badge mt-3 px-4 py-1 rounded-full bg-white/80 text-[#9e2a4b] font-bold text-sm shadow-sm">
                     ✨ Những khoảnh khắc đáng nhớ ✨
                 </span>
             </div>
 
             <!-- Lưới 4 ảnh Polaroid xếp theo 2 cột dọc (1-2 | 3-4) -->
-            <div class="flex flex-wrap sm:flex-nowrap items-center justify-center gap-5 sm:gap-7 w-full lg:w-2/3 max-w-2xl">
+            <div class="photos-grid-col flex flex-wrap sm:flex-nowrap items-center justify-center gap-5 sm:gap-7 w-full lg:w-2/3 max-w-2xl">
                 <!-- Input ẩn dùng để chọn ảnh thay thế trực tiếp từ máy tính -->
                 <input type="file" id="photo-uploader" accept="image/*" class="hidden">
 
                 <!-- CỘT 1: Memory 01 (trên) & Memory 02 (dưới) -->
-                <div class="flex flex-col gap-5 sm:gap-7 w-44 sm:w-56">
+                <div class="photos-pair-col flex flex-col gap-5 sm:gap-7 w-44 sm:w-56">
                     <div class="polaroid" style="transform: rotate(-5deg);" onclick="openPhoto(this)">
                         <button class="change-photo-btn" onclick="triggerPhotoUpload(event, 'mem-img-1')" title="Chọn ảnh khác thay thế">📷 Đổi ảnh</button>
                         <img id="mem-img-1" src="Memory 01.jpg" alt="Kỷ niệm 1" onerror="this.src='https://placehold.co/400x400/ffd6e0/8a2c48?text=Memory+01.jpg'">
@@ -796,7 +896,7 @@
                 </div>
 
                 <!-- CỘT 2: Memory 03 (trên) & Memory 04 (dưới) -->
-                <div class="flex flex-col gap-5 sm:gap-7 w-44 sm:w-56">
+                <div class="photos-pair-col flex flex-col gap-5 sm:gap-7 w-44 sm:w-56">
                     <div class="polaroid" style="transform: rotate(4deg) translateY(-6px);" onclick="openPhoto(this)">
                         <button class="change-photo-btn" onclick="triggerPhotoUpload(event, 'mem-img-3')" title="Chọn ảnh khác thay thế">📷 Đổi ảnh</button>
                         <img id="mem-img-3" src="Memory 03.jpg" alt="Kỷ niệm 3" onerror="this.src='https://placehold.co/400x400/ffc8d6/8a2c48?text=Memory+03.jpg'">
@@ -825,13 +925,13 @@
     <!-- MÀN HÌNH 3C: XEM VIDEO KỶ NIỆM (YOUTUBE)                  -->
     <!-- ========================================================= -->
     <section id="screen-music" class="screen">
-        <div class="w-full max-w-5xl flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 px-4">
-            <!-- Đĩa than xoay xoay bên cạnh màn hình video -->
+        <div class="video-layout w-full max-w-5xl flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 px-4">
+            <!-- Đĩa than xoay xoay bên trái -->
             <div class="flex flex-col items-center justify-center shrink-0">
                 <svg id="video-page-vinyl"
                      onclick="toggleVideoPlayback()"
                      title="Bấm vào đĩa than để bật / tạm dừng hiệu ứng quay"
-                     class="w-36 h-36 sm:w-44 sm:h-44 drop-shadow-xl vinyl-spin-anim cursor-pointer hover:scale-105 transition-transform"
+                     class="video-vinyl-img w-36 h-36 sm:w-44 sm:h-44 drop-shadow-xl vinyl-spin-anim cursor-pointer hover:scale-105 transition-transform"
                      viewBox="0 0 120 120" fill="none">
                     <circle cx="60" cy="60" r="54" fill="#1e1b1e" stroke="#ffffff" stroke-width="3"/>
                     <circle cx="60" cy="60" r="44" stroke="#3a333a" stroke-width="1.5"/>
@@ -845,8 +945,8 @@
                 </svg>
             </div>
 
-            <!-- Khung phát video -->
-            <div class="w-full max-w-2xl bg-white/95 p-3 sm:p-4 rounded-2xl shadow-2xl border-2 border-pink-200">
+            <!-- Khung phát video bên phải -->
+            <div class="video-player-card w-full max-w-2xl bg-white/95 p-3 sm:p-4 rounded-2xl shadow-2xl border-2 border-pink-200">
                 <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
                     <iframe id="yt-video-frame"
                             src="https://drive.google.com/file/d/1_zvJRWshrn_UzoTN2aRQ1NeZOS0z-Gd3/preview"
@@ -856,9 +956,16 @@
                             allowfullscreen>
                     </iframe>
                 </div>
-                <p class="text-center text-sm sm:text-base font-bold text-[#8a2c48] mt-3">
-                    🎵 Một món quà đặc biệt dành tặng cô giáo ngày 20/11 🎵
-                </p>
+                <div class="video-player-caption flex items-center justify-center gap-2.5 mt-3">
+                    <p class="text-center text-sm sm:text-base font-bold text-[#8a2c48]">
+                        🎵 Một món quà đặc biệt dành tặng cô giáo ngày 20/11 🎵
+                    </p>
+                    <button type="button"
+                            onclick="openLargeVideo()"
+                            class="px-2.5 py-1 rounded-full bg-pink-100 hover:bg-pink-200 text-[#8a2c48] text-xs font-bold cursor-pointer transition">
+                        🔍 Xem lớn
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -893,11 +1000,32 @@
     <!-- MODAL 2: PHÓNG TO ẢNH POLAROID KHI BẤM VÀO                -->
     <!-- ========================================================= -->
     <div id="photo-modal" class="modal-overlay" onclick="closePhoto()">
-        <div class="modal-card bg-white p-4 pb-8 rounded-xl shadow-2xl max-w-md w-full text-center" onclick="event.stopPropagation()">
-            <img id="modal-photo-img" src="" alt="Phóng to ảnh" class="w-full max-h-[65vh] object-contain rounded-md bg-pink-50">
-            <p id="modal-photo-caption" class="font-['Dancing_Script'] text-3xl text-[#8a2c48] mt-3"></p>
-            <button onclick="closePhoto()" class="mt-4 px-5 py-1.5 rounded-full bg-pink-100 hover:bg-pink-200 text-[#8a2c48] font-bold text-sm cursor-pointer">
+        <div class="modal-card bg-white p-4 pb-6 rounded-xl shadow-2xl max-w-2xl w-full text-center" onclick="event.stopPropagation()">
+            <img id="modal-photo-img" src="" alt="Phóng to ảnh" class="w-full max-h-[72vh] object-contain rounded-md bg-pink-50">
+            <p id="modal-photo-caption" class="font-['Dancing_Script'] text-3xl text-[#8a2c48] mt-2.5"></p>
+            <button onclick="closePhoto()" class="mt-3 px-5 py-1.5 rounded-full bg-pink-100 hover:bg-pink-200 text-[#8a2c48] font-bold text-sm cursor-pointer">
                 Đóng
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- MODAL 3: PHÓNG TO VIDEO KHI BẤM XEM LỚN                    -->
+    <!-- ========================================================= -->
+    <div id="video-modal" class="modal-overlay" onclick="closeLargeVideo()">
+        <div class="modal-card bg-white p-3 sm:p-4 rounded-2xl shadow-2xl max-w-4xl w-full text-center" onclick="event.stopPropagation()">
+            <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
+                <iframe id="modal-video-frame"
+                        src=""
+                        title="Phóng to video kỷ niệm 20/11"
+                        class="w-full h-full border-0"
+                        allow="autoplay; fullscreen"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <button onclick="closeLargeVideo()" class="mt-3 px-6 py-1.5 rounded-full bg-[#d84b76] hover:bg-[#b83b5e] text-white font-bold text-sm cursor-pointer shadow-sm">
+                Thu nhỏ lại
             </button>
         </div>
     </div>
@@ -907,7 +1035,7 @@
     <!-- JAVASCRIPT ĐIỀU KHIỂN FLOW & TƯƠNG TÁC                    -->
     <!-- ========================================================= -->
     <script>
-        // Tham chiếu tới khung iframe YouTube và đĩa than trên trang video
+        // Tham chiếu tới khung iframe YouTube/Drive và đĩa than trên trang video
         const ytVideoFrame = document.getElementById('yt-video-frame');
         const videoPageVinyl = document.getElementById('video-page-vinyl');
         let isVinylSpinning = true;
@@ -925,6 +1053,7 @@
 
             // Nếu đang rời khỏi màn hình video thì làm mới iframe để dừng phát tiếng nền
             if (currentActive && currentActive.id === 'screen-music' && targetId !== 'screen-music') {
+                closeLargeVideo();
                 if (ytVideoFrame) {
                     const currentSrc = ytVideoFrame.src;
                     ytVideoFrame.src = '';
@@ -981,6 +1110,22 @@
             document.getElementById('photo-modal').classList.remove('open');
         }
 
+        // Mở popup phóng to video
+        function openLargeVideo() {
+            const modalFrame = document.getElementById('modal-video-frame');
+            if (modalFrame && ytVideoFrame) {
+                modalFrame.src = ytVideoFrame.src;
+            }
+            document.getElementById('video-modal').classList.add('open');
+        }
+
+        function closeLargeVideo() {
+            const modal = document.getElementById('video-modal');
+            const modalFrame = document.getElementById('modal-video-frame');
+            if (modal) modal.classList.remove('open');
+            if (modalFrame) modalFrame.src = '';
+        }
+
         // Tính năng chọn ảnh từ máy tính để thay thế trực tiếp từng khung Polaroid
         let currentUploadTargetId = null;
         const photoUploader = document.getElementById('photo-uploader');
@@ -1011,6 +1156,7 @@
             if (e.key === 'Escape') {
                 closeVerse();
                 closePhoto();
+                closeLargeVideo();
             }
         });
 
